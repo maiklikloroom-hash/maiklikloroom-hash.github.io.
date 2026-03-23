@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ICONS */
+.icons {
+    display: flex;
+    justify-content: space-around;
+    background: #f2f2f2;
+    padding: 30px;
+    text-align: center;
+}
+
+.icons img {
+    width: 50px;
+}
+
+/* SECTIONS */
+.vision, .mission {
+    display: flex;
+    align-items: center;
+    padding: 80px;
+}
+
+.vision img, .mission img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+.text {
+    margin: 40px;
+}
+
+/* ACTIVITIES */
+.activities {
+    text-align: center;
+    padding: 80px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.card img {
+    width: 120px;
+}
