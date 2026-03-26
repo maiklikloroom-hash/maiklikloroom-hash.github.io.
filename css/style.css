@@ -11,6 +11,10 @@ body {
     color: white;
 }
 
+.header.small {
+    height: 300px;
+}
+
 .top-bar {
     display: flex;
     justify-content: space-between;
@@ -58,15 +62,6 @@ body {
     object-fit: contain;
 }
 
-/* увеличенные конкретные */
-.icons div:nth-child(2) img, /* Watermelon */
-.icons div:nth-child(4) img, /* Sunflower */
-.icons div:nth-child(6) img  /* Eggplant */
-{
-    width: 100px;
-    height: 100px;
-}
-
 /* SECTIONS */
 .vision, .mission {
     display: flex;
@@ -109,6 +104,49 @@ body {
 
 .card img {
     width: 100px;
+}
+
+/* PRODUCTS PAGE */
+.products {
+    padding: 80px;
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 36px;
+}
+
+.products p {
+    max-width: 800px;
+    margin: 20px auto;
+    color: #555;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product h4 {
+    margin: 10px 0 5px;
+}
+
+.product p {
+    font-size: 14px;
+    color: #666;
 }
 
 /* FOOTER */
