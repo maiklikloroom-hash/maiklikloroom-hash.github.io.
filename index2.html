@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Tomato - Agridera</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Products - Tomato | Agridera</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header small" style="background: url('images/image 7.png') center/cover no-repeat;">
+<!-- HEADER (белый, как требовалось) -->
+<div class="header small white-header">
     
     <div class="top-bar">
         <img src="images/Logo@2x.png" class="logo">
 
+        <input type="text" placeholder="Search products..." class="search">
+    </div>
+
+    <!-- Навигация теперь ПОД строкой поиска -->
+    <div class="nav-bar">
         <nav>
             <a href="index.html">Home</a>
             <a href="#">Company Profile</a>
             <a href="#">Management</a>
-            <a href="#">Products</a>
+            <a href="index2.html" class="active">Products</a>
             <a href="#">R&D</a>
             <a href="#">Contact</a>
         </nav>
-
-        <input type="text" placeholder="Search" class="search">
     </div>
 
 </div>
@@ -31,33 +34,35 @@
 <!-- CONTENT -->
 <div class="products">
 
-    <h2>Tomato</h2>
+    <h1>Tomato</h1>
 
-    <p>
-        Agridera is breeding and developing high quality tomato hybrids adapted for the Mediterranean surrounding countries using advanced molecular technology research combined with classic breeding techniques.
-    </p>
-
-    <p>
-        We will offer highly resistant TYLCV Determinate and Semi-Determinate Tomatoes for open field and indeterminate tomatoes for growing in greenhouses with high fruit quality, good flavor, long shelf life, with additional resistances like TSWV, Nematode and other disease resistances.
-    </p>
+    <div class="description">
+        <p>
+            Agridera is breeding and developing high quality tomato hybrids adapted for the Mediterranean surrounding countries using advanced molecular technology research combined with classic breeding techniques.
+        </p>
+        
+        <p>
+            We offer highly resistant varieties including <strong>TYLCV</strong>, <strong>TSWV</strong> and <strong>nematode resistance</strong>, ensuring high yield, excellent flavor and long shelf life.
+        </p>
+    </div>
 
     <!-- PRODUCTS GRID -->
     <div class="grid">
 
         <div class="product">
-            <img src="images/image 3(8).png">
+            <img src="images/image 3(8).png" alt="TAG 1000">
             <h4>TAG 1000 (TAG 853)</h4>
             <p>Tomato Determinate Red Standard Round</p>
         </div>
 
         <div class="product">
-            <img src="images/image 3 (1).png">
+            <img src="images/image 3 (1).png" alt="TAG 1001">
             <h4>TAG 1001 (TAG 855)</h4>
             <p>Tomato Determinate Red Standard Round</p>
         </div>
 
         <div class="product">
-            <img src="images/image 3 (2).png">
+            <img src="images/image 3 (2).png" alt="TAG 1002">
             <h4>
                 <a href="index3.html" style="text-decoration: none; color: inherit;">
                     TAG 1002 (TAG 809)
@@ -67,31 +72,31 @@
         </div>
 
         <div class="product">
-            <img src="images/image 3 (3).png">
+            <img src="images/image 3 (3).png" alt="TAG 1003">
             <h4>TAG 1003 (TAG 834)</h4>
             <p>Tomato Determinate Red Standard Round</p>
         </div>
 
         <div class="product">
-            <img src="images/image 3 (4).png">
+            <img src="images/image 3 (4).png" alt="TAG 1004">
             <h4>TAG 1004 (TAG 848)</h4>
             <p>Tomato Determinate Red BEEF Round</p>
         </div>
 
         <div class="product">
-            <img src="images/image 3 (5).png">
+            <img src="images/image 3 (5).png" alt="TAG 1005">
             <h4>TAG 1005 (TAG 800)</h4>
             <p>Tomato Determinate Red Standard Round</p>
         </div>
 
         <div class="product">
-            <img src="images/image 3 (6).png">
+            <img src="images/image 3 (6).png" alt="TAG 1006">
             <h4>TAG 1006 (TAG 898)</h4>
             <p>Tomato Determinate Red Elongated</p>
         </div>
 
         <div class="product">
-            <img src="images/image 3 (7).png">
+            <img src="images/image 3 (7).png" alt="TAG 1007">
             <h4>TAG 1007 (TAG 816)</h4>
             <p>Tomato Determinate Red Elongated</p>
         </div>
@@ -114,12 +119,14 @@
     </div>
 
     <div class="socials">
-        <img src="images/Ico_fb.png">
-        <img src="images/Ico_in.png">
-        <img src="images/Ico_inst.png">
-        <img src="images/Ico_tube.png">
-        <img src="images/Ico_tw.png">
+        <img src="images/Ico_fb.png" alt="Facebook">
+        <img src="images/Ico_in.png" alt="LinkedIn">
+        <img src="images/Ico_inst.png" alt="Instagram">
+        <img src="images/Ico_tube.png" alt="YouTube">
+        <img src="images/Ico_tw.png" alt="Twitter">
     </div>
+
+    <p class="copyright">AGRIDERA © 2020 - 2026. All Rights Reserved.</p>
 
 </div>
 
