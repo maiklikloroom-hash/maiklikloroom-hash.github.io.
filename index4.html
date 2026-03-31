@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Agridera</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <style>
+        .cart-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+        .cart-table th, .cart-table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        .cart-table img { width: 60px; height: 60px; object-fit: cover; }
+        .remove-btn { color: red; font-size: 20px; cursor: pointer; }
+        .order-success { background: #f0f9f0; padding: 20px; border: 1px solid #6aa84f; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header small white-header">
+    <div class="top-bar">
+        <img src="images/Logo@2x.png" class="logo">
+        <input type="text" class="search" placeholder="Search">
+    </div>
+    <div class="nav-bar">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Company Profile</a>
+            <a href="index2.html">Products</a>
+            <a href="#">Services</a>
+            <a href="#">R & D</a>
+            <a href="index4.html" class="active">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- BANNER -->
+<div style="height:300px; background:url('images/image 7(1).jpg') center/cover no-repeat;"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="app">
+    <h2>Contact us</h2>
+    <div style="color:#6aa84f; margin-bottom:20px;">*****</div>
+
+    <!-- КОРЗИНА -->
+    <div v-if="cart.length > 0">
+        <h3>Товари у вашій заявці:</h3>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Зображення</th>
+                    <th>Назва</th>
+                    <th>Опис</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in cart" :key="item.id">
+                    <td><img :src="item.image" alt="product"></td>
+                    <td><strong>{{ item.name }}</strong></td>
+                    <td>{{ item.shortDescription || item.description }}</td>
+                    <td><span class="remove-btn" @click="removeFromCart(item.id)">✕</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="contact-form">
+
+        <!-- ФОРМА -->
+        <form v-if="!orderSent" @submit.prevent="makeOrder">
+            <!-- LEFT -->
+            <div class="contact-left">
+                <label>Name *<input type="text" v-model="contactFields.name" required></label>
+                <label>Company Name<input type="text" v-model="contactFields.company"></label>
+                <label>Position<input type="text" v-model="contactFields.position"></label>
+                <label>City<input type="text" v-model="contactFields.city"></label>
+                <label>Country<input type="text" v-model="contactFields.country"></label>
+                <label>Telephone<input type="text" v-model="contactFields.telephone"></label>
+                <label>Email *<input type="email" v-model="contactFields.email" required></label>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="contact-right">
+                <label>You are a</label>
+                <select v-model="contactFields.type">
+                    <option value="seed producer">seed producer</option>
+                    <option value="distributor">distributor</option>
+                    <option value="other">other</option>
+                </select>
+
+                <label>If other, please specify</label>
+                <input type="text" v-model="contactFields.other">
+
+                <label>You are interested in</label>
+                <textarea v-model="contactFields.interest"></textarea>
+
+                <div class="contact-bottom">
+                    <div>
+                        <small>Please type this code</small><br>
+                        <strong>7 C J 3</strong>
+                    </div>
+                    <input type="text" required>
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- УСПІШНЕ ВІДПРАВЛЕННЯ -->
+        <div v-else class="order-success">
+            <h3>Дякуємо! Ваша заявка надіслана.</h3>
+            <p><strong>Ім'я:</strong> {{ contactFields.name }}</p>
+            <p><strong>Компанія:</strong> {{ contactFields.company }}</p>
+            <p><strong>Email:</strong> {{ contactFields.email }}</p>
+            <p><strong>Тип:</strong> {{ contactFields.type }}</p>
+            <p v-if="contactFields.interest"><strong>Інтерес:</strong> {{ contactFields.interest }}</p>
+            
+            <button class="btn" @click="resetForm">Надіслати ще одну заявку</button>
+        </div>
+
+    </div>
+
+    <!-- ADDRESS -->
+    <div class="contact-address">
+        <h4>Our Address</h4>
+        AGRIDERA Seeds & Agriculture Ltd.<br>
+        P.O Box 103,<br>
+        Gedera 70750, Israel.<br>
+        Telephone: +972 8 944 9222
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="menu">
+        <a href="#">PROFILE</a>
+        <a href="#">MANAGEMENT</a>
+        <a href="index2.html">PRODUCTS</a>
+        <a href="#">R&D</a>
+        <a href="#">LINKS</a>
+        <a href="#">SITEMAP</a>
+        <a href="index4.html">CONTACT</a>
+    </div>
+    <div class="socials">
+        <img src="images/Ico_fb.png">
+        <img src="images/Ico_in.png">
+        <img src="images/Ico_inst.png">
+        <img src="images/Ico_tube.png">
+        <img src="images/Ico_tw.png">
+    </div>
+    <div class="copyright">© 2026 Agridera</div>
+</footer>
+
+<script>
+// Приклад масиву products (якщо його немає в глобальному скрипті — додайте)
+const products = [
+    { id: 1, name: "Sunflower Hybrid", shortDescription: "High oil content", image: "images/product1.jpg" },
+    { id: 2, name: "Corn Hybrid", shortDescription: "Drought resistant", image: "images/product2.jpg" },
+    // ... інші товари
+];
+
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            cart: [],
+            contactFields: {
+                name: '',
+                company: '',
+                position: '',
+                city: '',
+                country: '',
+                telephone: '',
+                email: '',
+                type: 'seed producer',
+                other: '',
+                interest: ''
+            },
+            orderSent: false
+        }
+    },
+    methods: {
+        // 1. Отримання корзини з localStorage
+        getCart() {
+            const cartIds = JSON.parse(localStorage.getItem('cart')) || [];
+            this.cart = cartIds
+                .map(id => products.find(p => p.id === id))
+                .filter(item => item !== undefined);
+        },
+
+        // 3. Видалення товару
+        removeFromCart(id) {
+            // Видаляємо з масиву
+            this.cart = this.cart.filter(item => item.id !== id);
+            
+            // Видаляємо з localStorage
+            let cartIds = JSON.parse(localStorage.getItem('cart')) || [];
+            cartIds = cartIds.filter(cartId => cartId !== id);
+            localStorage.setItem('cart', JSON.stringify(cartIds));
+        },
+
+        // 6. Відправка форми
+        makeOrder() {
+            if (!this.contactFields.name || !this.contactFields.email) return;
+            
+            console.log("Замовлення відправлено:", this.contactFields);
+            this.orderSent = true;
+
+            // Очищаємо корзину після відправки
+            this.cart = [];
+            localStorage.removeItem('cart');
+        },
+
+        resetForm() {
+            this.orderSent = false;
+            this.contactFields = {
+                name: '', company: '', position: '', city: '', country: '',
+                telephone: '', email: '', type: 'seed producer', other: '', interest: ''
+            };
+        }
+    },
+    mounted() {
+        this.getCart();
+    }
+}).mount('#app');
+</script>
+
+</body>
+</html>
